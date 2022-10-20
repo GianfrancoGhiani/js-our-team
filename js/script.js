@@ -55,8 +55,11 @@ const ourTeam = [
     }
 
 ]
+const container = document.getElementById('container');
 for (let teamMate of ourTeam){
     for (let detail in teamMate){
-        console.log(detail+': '+teamMate[detail]);
+        const text = document.createElement('p');
+        text.innerText = `${detail}: ${teamMate[detail]}`;
+        container.append(text);
     }
 }
