@@ -55,11 +55,33 @@ const ourTeam = [
     }
 
 ]
-const container = document.getElementById('container');
+const page = document.getElementById('container');
+page.setAttribute('style', `background-color:rgba(57, 145, 7, .4); height:100vh`);
+
+const container = document.getElementById('row');
 for (let teamMate of ourTeam){
-    for (let detail in teamMate){
-        const text = document.createElement('p');
-        text.innerText = `${detail}: ${teamMate[detail]}`;
-        container.append(text);
-    }
+    const cardContainer = document.createElement('div');
+        cardContainer.className = 'col'
+        container.append(cardContainer);
+    const card = document.createElement('div');
+        card.className = 'rounded-2 p-3 d-flex align-items-center justify-content-start';
+        card.setAttribute('style', `background-color:#27BA95`);
+        cardContainer.append(card);
+    const img = document.createElement('img');
+        img.setAttribute('src', `./img/${teamMate.img}`);
+        img.setAttribute('max-width', `100%`);
+        img.setAttribute('width', `30%`);
+        img.className = 'rounded-circle';
+        card.append(img);
+    const cardText = document.createElement('div');
+        cardText.className = 'fw-bold mx-4';
+        card.append(cardText);
+    const name = document.createElement('div');
+        name.innerText = `${teamMate.name}`;
+        name.setAttribute('style', `color:#920025`);
+        cardText.append(name);
+    const role = document.createElement('div');
+        role.innerText = `${teamMate.role}`;
+        role.setAttribute('style', `font-size:.8em; color:#84E3CC`);
+        cardText.append(role);
 }
